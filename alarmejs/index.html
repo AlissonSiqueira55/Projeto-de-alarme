@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <link href="estilo/stylo.css" rel="stylesheet">
+
+  <title>projeto cronomito - javascript</title>
+  <style>
+    .container{
+        text-align: center;
+    }
+    button{
+        background: rgb(18, 16, 192);
+        color: white;
+        font-size: 15px;
+        padding: 8px 20px;
+        cursor: pointer;
+        border: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+    <div id="dov">
+
+    <img src="https://lh3.googleusercontent.com/proxy/JAPex4nel_Zys-Q0_4QEobqQNHUySAJsrUlbg-Xn_n17DZK5BIVqiS1TO1TRCJKZLxn2LeLfgMa9g9u4KGeMB24ckZz5axL0uhT_if3YTviX7inuLlcerh15pw4=w1200-h630-p-k-no-nu"  alt="" >
+</div>
+    
+    <audio id="sound" src="alarme.mp3.mp3" style="display: none;"></audio>
+    
+    <div class="container">
+        <h2>minutos:</h2>
+        <select name="minutos" id="minutos"></select> 
+        
+        <h2>segundos:</h2>
+        <select name="segundos" id="segundos"></select><br><br><br><br>
+
+        <button id="começar">COMEÇAR!</button>
+
+        <div id="display">
+            <h3></h3>
+
+        </div><!--display-->
+
+
+    </div> <!--CONTAINER-->
+    <script>
+        var display= document.getElementById('display');
+        var minutos= document.getElementById('minutos');
+        var segundos= document.getElementById('segundos');
+        var começar= document.getElementById('começar');
+
+        var cronometroSeg;
+        var minutoAtual;
+        var segundoAtual;
+        var interval;
+
+        for ( var i=0; i <= 60; i++){
+            minutos.innerHTML+='<option value="'+i+'">'+i+'</Option>';
+        }
+
+        for ( var i=1; i <= 60; i++){
+            segundos.innerHTML+='<option value="'+i+'">'+i+'</Option>';
+        }
+
+        começar.addEventListener('click',function(){
+            minutoAtual = minutos.value;
+            segundoAtual = segundos.value;
+
+            display.childNodes[1].innerHTML=minutoAtual+":"+segundoAtual;
+
+            interval = setInterval(function(){
+                segundoAtual--;
+                if(segundoAtual <= 0){
+                    if(minutoAtual> 0){
+                        minutoAtual--;
+                        segundoAtual = 59;
+                    }else{
+                        alert("acabou!");
+                        document.getElementById("sound").play();
+                        clearInterval(interval);
+                    }
+                }
+                display.childNodes[1].innerHTML=minutoAtual+":"+segundoAtual;
+
+            },1000);
+        })
+           
+    </script>
+</body>
+
+</html>

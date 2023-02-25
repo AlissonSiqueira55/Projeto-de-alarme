@@ -1,0 +1,17 @@
+h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(2, 5, 2);
+    background-color: rgb(32, 218, 63);
+
+
+}
+
+body{
+    background-color: rgb(165, 42, 42);
+}
+#dov{
+    display: flex;
+    justify-content: center;
+    height: 250;
+} 
+ 
